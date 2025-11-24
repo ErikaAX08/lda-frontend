@@ -1,43 +1,64 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header elevated class="bg-gradient-primary">
       <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
-
-        <q-toolbar-title>
-          Quasar App
+        <q-toolbar-title class="text-weight-bold">
+          <q-icon name="auto_stories" size="sm" class="q-mr-sm" />
+          LDA Topic Analyzer
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <!-- Redes Sociales -->
+        <div class="row q-gutter-sm">
+          <q-btn
+            flat
+            round
+            dense
+            icon="mdi-instagram"
+            href="https://instagram.com/tu-usuario"
+            target="_blank"
+            class="social-btn"
+          >
+            <q-tooltip>Instagram</q-tooltip>
+          </q-btn>
+
+          <q-btn
+            flat
+            round
+            dense
+            icon="mdi-github"
+            href="https://github.com/tu-usuario"
+            target="_blank"
+            class="social-btn"
+          >
+            <q-tooltip>GitHub</q-tooltip>
+          </q-btn>
+
+          <q-btn
+            flat
+            round
+            dense
+            icon="mdi-linkedin"
+            href="https://linkedin.com/in/tu-usuario"
+            target="_blank"
+            class="social-btn"
+          >
+            <q-tooltip>LinkedIn</q-tooltip>
+          </q-btn>
+
+          <q-btn
+            flat
+            round
+            dense
+            icon="mdi-web"
+            href="https://tu-sitio-web.com"
+            target="_blank"
+            class="social-btn"
+          >
+            <q-tooltip>Mi Sitio Web</q-tooltip>
+          </q-btn>
+        </div>
       </q-toolbar>
     </q-header>
-
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
-
-        <EssentialLink
-          v-for="link in linksList"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>
 
     <q-page-container>
       <router-view />
@@ -45,58 +66,19 @@
   </q-layout>
 </template>
 
-<script setup>
-import { ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
+<script setup></script>
 
-const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-]
-
-const leftDrawerOpen = ref(false)
-
-function toggleLeftDrawer () {
-  leftDrawerOpen.value = !leftDrawerOpen.value
+<style scoped>
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
-</script>
+
+.social-btn {
+  transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.1);
+}
+</style>
